@@ -15,23 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});*/
+Route::middleware('auth:sanctum')->group(function() {
+    Route::post('/logout', function(Request $request) {
+        $user = Auth::user();
+        $user->tokens()->delete();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    });
 
-Route::post('/logout', function(Request $request) {
-    $user = Auth::user();
-    $user->tokens()->delete();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+    Route::apiResource('tasks', \App\Http\Controllers\TaskController::class);
 });
-
-/*Route::prefix('tasks')->controller(\App\Http\Controllers\TaskController::class)->group(function() {
-    Route::get('/', 'index');
-    Route::post('/', 'store');
-    Route::get('/{id}', 'show');
-    Route::put('/{id}', 'update');
-    Route::delete('/{id}', 'destroy');
-});*/
-
-Route::apiResource('tasks', \App\Http\Controllers\TaskController::class);

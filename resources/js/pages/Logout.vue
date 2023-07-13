@@ -11,7 +11,7 @@ const router = useRouter()
 const store = useStore()
 
 onMounted(async () => {
-    await store.dispatch('auth/logout/loadTasks')
+    await store.dispatch('auth/logout')
     await router.push({
         name: 'login'
     })

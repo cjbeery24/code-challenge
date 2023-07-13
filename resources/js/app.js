@@ -37,6 +37,18 @@ const vuetify = createVuetify({
 import router from './router'
 import store from './store'
 
+window.axios.interceptors.response.use(response => {
+    return response;
+}, error => {
+    if (error.response.status === 401) {
+        store.dispatch('auth/logout')
+        router.push({
+            name: 'login'
+        })
+    }
+    return error;
+});
+
 const app = createApp({});
 
 /**

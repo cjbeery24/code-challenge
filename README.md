@@ -1,13 +1,35 @@
 
-## Setup
+## Install Dependencies
+```
+composer install
+npm install
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Create .env File
+```
+cp .env.example .env
+php artisan key:generate
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Create Database
 
+Create a mysql database called "code-challenge". 
+Update .env file with username / password.
+```
+DB_DATABASE=code-challenge
+DB_USERNAME=root
+DB_PASSWORD=
+```
+Run migrations.
+```
+php artisan migrate
+```
+
+## Start Server
+```
+php artisan serve
+```
+## Compile and Serve Front End
+```
+npm run dev
+```

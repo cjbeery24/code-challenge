@@ -19,7 +19,7 @@ const routes = [
         children: [
             {
                 name: 'login',
-                path: '/login',
+                path: '',
                 component: Login,
                 meta: {
                     middleware: 'guest',
