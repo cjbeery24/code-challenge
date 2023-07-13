@@ -33,3 +33,13 @@ php artisan serve
 ```
 npm run dev
 ```
+
+## Run Queue Worker
+```
+php artisan queue:work
+```
+
+## Ready to go!
+```
+http://localhost:8000
+```
